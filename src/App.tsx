@@ -16,9 +16,10 @@ import { getProfile } from "./lib/api/call/profile";
 import { SET_LOGIN } from "./store/slice/auth";
 import { useEffect } from "react";
 import DetailThread from "./pages/DetailThread";
-import Follow from "./pages/Follow/component/follow";
 import FollowButton from "./pages/Follow/pagesFollow";
 import Person from "./pages/ProfilePerson/person";
+import ModalDetailImage from "./component/modalDetailImage/ModalDetailImage";
+
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -67,6 +68,8 @@ const App = () => {
               <Route path="/follow" element={<FollowButton />} />
               <Route path="detail/:threadId" element={<DetailThread/>}/>
               <Route path="/profile-id/:userId" element={<Person />} />
+
+
             </Route>
           </Route>
 

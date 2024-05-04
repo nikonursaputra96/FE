@@ -8,6 +8,7 @@ const Following = () => {
 
 
     const profile = useAppSelector((state) => state.auth.user)
+  
 
   return (
     <Flex px={5}>
@@ -36,7 +37,7 @@ const Following = () => {
             </Box>
           </Flex>
           <Box>
-            <Follow followingId={data.followerId}  />
+            <Follow followingId={data.followerId}  onFollow={data.id}/>
           </Box>
         </Flex>
       ))}

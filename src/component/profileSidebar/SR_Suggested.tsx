@@ -13,25 +13,22 @@ const SideBarSuggested = () => {
   const hostURL = "http://localhost:5000/assets/";
   const [user, setUser] = useState<IUser[] | []>([]);
 
-  // const [displayUser, setDisplayUser] = useState<IUser[]>([])
+
 
   const getUser = async () => {
     try {
       const res = await getUsers();
  
       setUser(res.data.data)
-
-
+ 
     } catch (error) {
       console.log(error);
     }
   };
 
-
-  
-  // const handleRemove = (userId:number) => {
-  //   setDisplayUser((prevUser) => prevUser.filter((user) => user.id !== userId))
-  // }
+  const handleFollow = (userId: number) => {
+    setUser((data) => data.filter((user) => user.id !== userId))
+  }
 
   useEffect(() => {
     getUser();
@@ -76,7 +73,7 @@ const SideBarSuggested = () => {
               </Box>
             </Flex>
             <Box>
-             <Follow followingId={data.id}/>
+             <Follow followingId={data.id} onFollow={() => handleFollow(data.id)}/>
             </Box>
           </Flex>
         ))}

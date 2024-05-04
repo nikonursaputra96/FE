@@ -9,10 +9,10 @@ import { getProfile } from "../../lib/api/call/editProfile";
 
 interface IFollowProps {
     followingId: number
-    // onFollow: (followingId: number) => void
+    onFollow: (followingId: number) => void
 }
 
-const Follow:React.FC<IFollowProps> = ({followingId}) => {
+const Follow:React.FC<IFollowProps> = ({followingId, onFollow}) => {
     const profile = useAppSelector((state) => state.auth.user);
     const [follow, setFollow] = useState(false)
     const dispatch = useAppDispatch()
@@ -42,8 +42,6 @@ const Follow:React.FC<IFollowProps> = ({followingId}) => {
           }
       };
 
-
-
   
 
     const handleFollow = async () => {
@@ -72,7 +70,7 @@ const Follow:React.FC<IFollowProps> = ({followingId}) => {
             console.log('ini adalah data res', res.data)
             console.log('ini adalah data',  data.data)
        
-            // onFollow(data.data.followingId)
+            onFollow(data.data.followingId)
         } catch (error) {
             console.log(error)
         }
@@ -80,7 +78,7 @@ const Follow:React.FC<IFollowProps> = ({followingId}) => {
  
     useEffect(() => {
       getFollower()
-    },[])
+    },[followingId, profile?.user.id])
     // .......................................................................//
   //   useEffect(() => {
   //     const getFollower = async () => {

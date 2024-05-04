@@ -37,7 +37,7 @@ const Followers = () => {
                   </Box>
                 </Flex>
                 <Box>
-                  <Follow followingId={data.followingId}/>
+                  <Follow followingId={data.followingId} onFollow={data.id}/>
                 </Box>
               </Flex>
             ))}
