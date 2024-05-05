@@ -17,7 +17,6 @@ const ProfileHeaderPerson = ({handleMenuClick, menuActive}:ProfileHeaderPerson):
   const { userId } = useParams();
   const { fetchThreadDetail, threadDetail} = useMediaProfile();
 
-  const hostURL = "http://localhost:5000/assets/"
   const navigate = useNavigate()
 
 
@@ -47,16 +46,16 @@ const ProfileHeaderPerson = ({handleMenuClick, menuActive}:ProfileHeaderPerson):
         <Box
           w="auto"
           h="100px"
-          bg={`url('${hostURL + threadDetail?.data.cover}')`}
+          bg={`url('${threadDetail?.data.cover}')`}
           bgPosition="center"
           borderRadius="lg"
           mt={3}
         >
-          <Avatar w="80px" h="80px" mt={62} ml={25} border="3px solid black" src={hostURL + threadDetail?.data.avatar} />
+          <Avatar w="80px" h="80px" mt={62} ml={25} border="3px solid black" src={threadDetail?.data.avatar} />
         </Box>
 
         <Flex justifyContent="flex-end" mt={3}>
-          <Follow followingId={Number(threadDetail?.data.userId)}/>
+          <Follow followingId={threadDetail?.data.userId ? Number(threadDetail?.data.userId) : 0} onFollow={() => (Number(threadDetail?.data.userId))}/>
         </Flex>
 
         <Box>

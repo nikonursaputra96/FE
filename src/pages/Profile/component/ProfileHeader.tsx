@@ -13,7 +13,6 @@ type ProfileHeader = {
 
 const ProfileHeader = ({handleMenuClick, menuActive}:ProfileHeader): React.JSX.Element => {
   const profile = useAppSelector((state) => state.auth.user)
-  const hostURL = "http://localhost:5000/assets/"
   const navigate = useNavigate()
   
 
@@ -34,12 +33,12 @@ const ProfileHeader = ({handleMenuClick, menuActive}:ProfileHeader): React.JSX.E
         <Box
           w="auto"
           h="100px"
-          bg={`url('${hostURL + profile?.cover}')`}
+          bg={`url('${profile?.cover}')`}
           bgPosition="center"
           borderRadius="lg"
           mt={3}
         >
-          <Avatar w="80px" h="80px" mt={62} ml={25} border="3px solid black" src={hostURL + profile?.avatar} />
+          <Avatar w="80px" h="80px" mt={62} ml={25} border="3px solid black" src={profile?.avatar} />
         </Box>
 
         <Flex justifyContent="flex-end" mt={3}>

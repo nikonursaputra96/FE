@@ -11,27 +11,18 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 import { formatDistanceToNow } from "date-fns";
 import Like from "../../component/Likebutton/Like";
 
-
 const DetailThread = () => {
- 
-
-  const navigate= useNavigate()
+  const navigate = useNavigate();
 
   const { threadId } = useParams();
-  
+
   const [threadDetail, setThreadDetail] = useState<IThread>({
     userId: 0,
     content: "",
     image: [],
     id: 0,
-    createdAt: ``
+    createdAt: ``,
   });
-
-
-
-
-
-
 
   const [replies, setReplies] = useState<IThread[]>([]);
 
@@ -53,21 +44,26 @@ const DetailThread = () => {
 
   return (
     <Box mt={"15px"}>
-      <Flex cursor={"pointer"} onClick={() => navigate("/")} align={"center"} ml={6} gap={5} mb={5}  px={5}>
-        <FaArrowLeftLong size={24}/>
-        <Text  fontSize={"1.2rem"} fontWeight={"bold"}>
+      <Flex
+        cursor={"pointer"}
+        onClick={() => navigate("/")}
+        align={"center"}
+        ml={6}
+        gap={5}
+        mb={5}
+        px={5}
+      >
+        <FaArrowLeftLong size={24} />
+        <Text fontSize={"1.2rem"} fontWeight={"bold"}>
           Status
         </Text>
       </Flex>
-      <Box  px={5}>
-        <Flex  color="white" mt="15px">
+      <Box px={5}>
+        <Flex color="white" mt="15px">
           <Avatar
             w="40px"
             h="40px"
-            src={
-              "http://localhost:5000/assets/" +
-              threadDetail.author?.profile?.avatar
-            }
+            src={threadDetail.author?.profile?.avatar}
           />
           <Flex flexDirection="column">
             <Flex fontSize="14px" gap={1} ml={3}>
@@ -76,14 +72,22 @@ const DetailThread = () => {
                 @{threadDetail.author?.username}
               </Text>
               <Text color="rgba(144, 144, 144, 1)">•</Text>
-              <Text color="rgba(144, 144, 144, 1)">{threadDetail.createdAt ? formatDistanceToNow(new Date(threadDetail.createdAt), { addSuffix: false }) : ''}</Text>
+              <Text color="rgba(144, 144, 144, 1)">
+                {threadDetail.createdAt
+                  ? formatDistanceToNow(new Date(threadDetail.createdAt), {
+                      addSuffix: false,
+                    })
+                  : ""}
+              </Text>
             </Flex>
-            {threadDetail.image &&
-              threadDetail.image.map((image ,index) => (
-                <Flex key={index}  mt={4}  w="auto" h={"auto"}>
-                  <Image  borderRadius="xl" src={"http://localhost:5000/assets/" + image.image} />
-                </Flex>
-              ))}
+            <Box>
+              {threadDetail.image &&
+                threadDetail.image.map((image, index) => (
+                  <Flex key={index} mt={4} flexWrap={"wrap"}>
+                    <Image borderRadius="xl" src={image.image} w={"50%"} flex={1}/>
+                  </Flex>
+                ))}
+            </Box>
 
             <Text
               textAlign="justify"
@@ -96,11 +100,10 @@ const DetailThread = () => {
               {threadDetail.content}
             </Text>
             <Flex gap={2} fontSize="14px" ml={3} mt={3}>
-
-              <Box >
-                <Like threadId={Number(threadId)}/>
+              <Box>
+                <Like threadId={Number(threadId)} />
               </Box>
-              
+
               <TbMessage
                 cursor="pointer"
                 size={20}
@@ -119,7 +122,7 @@ const DetailThread = () => {
 
       <Box>
         {replies.map((reply) => (
-          <ThreadCard thread={reply} key={reply.id} showLike = {false}/>
+          <ThreadCard thread={reply} key={reply.id} showLike={true} showReplies={true} />
         ))}
       </Box>
     </Box>

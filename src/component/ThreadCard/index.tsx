@@ -3,7 +3,7 @@ import { IThread } from "../../types/app";
 
 import { TbMessage } from "react-icons/tb";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { formatDistanceToNow } from "date-fns";
 
 import { getReplies } from "../../lib/api/call/thread";
@@ -12,9 +12,10 @@ import Like from "../Likebutton/Like";
 interface IThreadProps {
   thread: IThread;
   showLike: boolean;
+  showReplies : boolean
 }
 
-const ThreadCard: React.FC<IThreadProps> = ({ thread, showLike = true }) => {
+const ThreadCard: React.FC<IThreadProps> = ({ thread, showLike = true, showReplies = true }) => {
   const [replies, setReplies] = useState<IThread[]>([]);
  
 
@@ -41,7 +42,7 @@ const ThreadCard: React.FC<IThreadProps> = ({ thread, showLike = true }) => {
         cursor={"pointer"}
           w="40px"
           h="40px"
-          src={"http://localhost:5000/assets/" + thread.author?.profile?.avatar}
+          src={thread.author?.profile?.avatar}
           onClick={() => {
             navigate(`/profile-id/${thread.userId}`);
           }}
@@ -75,7 +76,7 @@ const ThreadCard: React.FC<IThreadProps> = ({ thread, showLike = true }) => {
                         flex={1}
                         px={1}
                         py={1}
-                    src={"http://localhost:5000/assets/" + image.image}
+                    src={image.image}
                     borderRadius={"xl"}
                   />
                 
@@ -98,7 +99,7 @@ const ThreadCard: React.FC<IThreadProps> = ({ thread, showLike = true }) => {
                 <Like threadId={thread.id as number} />
               </Box>
             )}
-            {showLike && (
+            {showReplies && (
               <Flex gap={2}    onClick={() => {
                 navigate(`/detail/${thread.id}`);
               }}>

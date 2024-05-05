@@ -5,7 +5,6 @@ import Follow from '../../../component/followButton/Follow';
 import { useAppSelector } from '../../../store';
 
 const Followers = () => {
-    const hostURL = "http://localhost:5000/assets/";
     const profile = useAppSelector((state) => state.auth.user);
 
 
@@ -23,7 +22,7 @@ const Followers = () => {
               >
                 <Flex alignItems="center">
                   <Avatar
-                    src={hostURL + data.following?.profile?.avatar || ''}
+                    src={data.following?.profile?.avatar || ''}
                     w={"40px"}
                     h={"40px"}
                   />

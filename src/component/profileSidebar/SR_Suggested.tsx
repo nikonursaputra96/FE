@@ -10,7 +10,6 @@ const SideBarSuggested = () => {
 
 
 
-  const hostURL = "http://localhost:5000/assets/";
   const [user, setUser] = useState<IUser[] | []>([]);
 
 
@@ -62,7 +61,7 @@ const SideBarSuggested = () => {
         
           >
             <Flex alignItems="center">
-              <Avatar src={hostURL + data.profile?.avatar} w={"40px"} h={"40px"}/>
+              <Avatar src={data.profile?.avatar} w={"40px"} h={"40px"}/>
               <Box ml={2}>
                 <Text fontSize="0.8rem" color="white" fontWeight="bold">
                   {data.fullname}

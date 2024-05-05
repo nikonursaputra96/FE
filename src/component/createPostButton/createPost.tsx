@@ -32,7 +32,7 @@ const ThreadPostModal: React.FC<IThreadPostProps> = ({
   callback,
 }) => {
   const profile = useAppSelector((state) => state.auth.user);
-  const hostURL = "http://localhost:5000/assets/";
+
 
   const [threadPost, setThreadPost] = useState<{
     content: string;
@@ -54,7 +54,7 @@ const ThreadPostModal: React.FC<IThreadPostProps> = ({
       }
 
       setThreadPost({ content: "", image: null });
-      onClose(); // Tutup modal setelah membuat benang
+      onClose(); 
     } catch (error) {
       console.log(error);
     }
@@ -86,7 +86,7 @@ const ThreadPostModal: React.FC<IThreadPostProps> = ({
                   mr={8}
                   w="40px"
                   h="40px"
-                  src={hostURL + profile?.avatar}
+                  src={profile?.avatar}
                 />
                 <Input
                   placeholder="What's Happening ?!"

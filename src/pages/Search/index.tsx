@@ -15,7 +15,6 @@ import { IUser } from "../../types/app";
 import Follow from "../../component/followButton/Follow";
 
 const Search = () => {
-  const hostURL = "http://localhost:5000/assets/";
   const [searchInput, setSearchInput] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [searching, setSearching] = useState(false);
@@ -85,7 +84,7 @@ const Search = () => {
                 >
                   <Flex alignItems="center">
                     <Avatar
-                      src={hostURL + data.profile?.avatar}
+                      src={data.profile?.avatar}
                       w={"40px"}
                       h={"40px"}
                     />
@@ -103,7 +102,7 @@ const Search = () => {
                     </Box>
                   </Flex>
                   <Box>
-                    <Follow followingId={data.id} />
+                    <Follow followingId={data.id} onFollow={() => Number(data.id)} />
                   </Box>
                 </Flex>
               ))

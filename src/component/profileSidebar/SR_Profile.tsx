@@ -6,7 +6,6 @@ import EditProfile from "../editProfile/EditProfile";
 
 const SideBarProfile = (): React.JSX.Element => {
   const profile = useAppSelector((state) => state.auth.user);
-  const hostURL = "http://localhost:5000/assets/";
 
 
 
@@ -29,7 +28,7 @@ const SideBarProfile = (): React.JSX.Element => {
 
           <Box
             h="100px"
-            bg={`url('${hostURL + profile?.cover}')`}
+            bg={`url('${profile?.cover}')`}
             bgPosition="center"
             borderRadius="lg"
             mt={3}
@@ -40,7 +39,7 @@ const SideBarProfile = (): React.JSX.Element => {
               mt={62}
               ml={25}
               border="3px solid #1d1d1d"
-              src={hostURL + profile?.avatar}
+              src={profile?.avatar}
             />
           </Box>
 

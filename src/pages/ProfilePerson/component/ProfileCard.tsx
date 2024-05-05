@@ -35,7 +35,7 @@ const ProfileCardsPerson: React.FC<IThreadProps> = ({showLike = true}): React.JS
                 w="40px"
                 h="40px"
                 src={
-                  "http://localhost:5000/assets/" + threadDetail?.data.avatar
+                 threadDetail?.data.avatar
                 }
               />
               <Flex flexDirection="column" key={index}>
@@ -62,7 +62,7 @@ const ProfileCardsPerson: React.FC<IThreadProps> = ({showLike = true}): React.JS
                       px={1}
                       key={index}
                       borderRadius="xl"
-                      src={"http://localhost:5000/assets/" + image.image}
+                      src={image.image}
                     />
                   ))}
                 </Flex>

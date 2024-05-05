@@ -5,7 +5,7 @@ export const getThreads = async () => {
     return await API.get("thread")
 }
 
-export const createThread = async (body : {
+export const  createThread = async (body : {
     content : string 
     image : FileList | null
     threadId? : number

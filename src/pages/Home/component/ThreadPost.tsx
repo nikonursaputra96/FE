@@ -17,7 +17,6 @@ interface IThreadPostProps {
 }
 const ThreadPost: React.FC<IThreadPostProps> = ({ threadId, callback }) => {
     const profile = useAppSelector((state) => state.auth.user)
-    const hostURL = "http://localhost:5000/assets/"
 
   const [threadPost, setThreadPost] = useState<{
     content: string;
@@ -51,7 +50,7 @@ const ThreadPost: React.FC<IThreadPostProps> = ({ threadId, callback }) => {
   return (
     <Box>
       <FormControl display={"flex"} color="white" px={5}>
-        <Avatar mr={8} w="40px" h="40px" src={hostURL + profile?.avatar}/>
+        <Avatar mr={8} w="40px" h="40px" src={profile?.avatar}/>
         <Input
           placeholder="What's Happening ?!"
           type="text"

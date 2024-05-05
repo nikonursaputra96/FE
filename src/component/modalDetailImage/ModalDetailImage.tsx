@@ -88,7 +88,7 @@ const ModalDetailImage: React.FC<ModalDetailImageProps> = ({
                 w={"70vw"}
                 h={"100vh"}
                 borderRadius={"10px"}
-                  src={"http://localhost:5000/assets/" + image}
+                  src={image}
                 />
               </Box>
             ))}
@@ -132,7 +132,6 @@ const ModalDetailImage: React.FC<ModalDetailImageProps> = ({
               w="40px"
               h="40px"
               src={
-                "http://localhost:5000/assets/" +
                 threadDetail.author?.profile?.avatar
               }
             />
@@ -181,7 +180,7 @@ const ModalDetailImage: React.FC<ModalDetailImageProps> = ({
         </Box>
         <Box
           overflowY={"scroll"}
-          maxH={"100vh"}
+          maxH={"calc(100vh - 200px)"}
           sx={{
             "&::-webkit-scrollbar": {
               display: "none",
@@ -189,7 +188,7 @@ const ModalDetailImage: React.FC<ModalDetailImageProps> = ({
           }}
         >
           {replies.map((reply) => (
-            <ThreadCard thread={reply} key={reply.id} showLike={false} />
+            <ThreadCard thread={reply} key={reply.id} showLike={true} showReplies={false}/>
           ))}
         </Box>
       </Box>

@@ -24,7 +24,6 @@ import { IProfile } from "../../types/app";
 
 const EditProfile = () => {
   const profile = useAppSelector((state) => state.auth.user);
-  const hostURL = "http://localhost:5000/assets/";
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useAppDispatch()
 
@@ -106,7 +105,7 @@ const EditProfile = () => {
               <Box
                 w="auto"
                 h="100px"
-                bg={`url('${hostURL + profile?.cover}')`}
+                bg={`url('${profile?.cover}')`}
                 borderRadius="lg"
               >
                 <Flex justifyContent={"center"} align={"center"}>
@@ -129,7 +128,7 @@ const EditProfile = () => {
                     mt={10}
                     ml={25}
                     border="3px solid black"
-                    src={hostURL + profile?.avatar}
+                    src={profile?.avatar}
                   />
                   <Flex position={"absolute"} mt={"60px"} ml={50}>
                     <label htmlFor="imageUploadAvatar">

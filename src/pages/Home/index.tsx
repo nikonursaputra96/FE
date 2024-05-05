@@ -32,7 +32,7 @@ const Home = () => {
         <ThreadPost callback={getThread}/>
       </Box >
         {threads.map((thread) => (
-            <ThreadCard key={thread.id} thread={thread} showLike={true}/>
+            <ThreadCard key={thread.id} thread={thread} showLike={true} showReplies={true}/>
         ))}
 
     </Box>

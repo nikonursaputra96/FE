@@ -20,7 +20,7 @@ const ProfileCards = (): React.JSX.Element => {
   return (
     <Box mt={1}>
       {filteredThreads?.map((thread: any, id: number) => (
-        <ThreadCard key={id} thread={thread} showLike={true}/>
+        <ThreadCard key={id} thread={thread} showLike={true} showReplies={true}/>
       ))}
     </Box>
   );

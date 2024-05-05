@@ -4,7 +4,6 @@ import { useAppSelector } from '../../../store';
 
 const Following = () => {
 
-    const hostURL = "http://localhost:5000/assets/";
 
 
     const profile = useAppSelector((state) => state.auth.user)
@@ -23,7 +22,7 @@ const Following = () => {
         >
           <Flex alignItems="center">
             <Avatar
-              src={hostURL + data.follower?.profile?.avatar || ''}
+              src={data.follower?.profile?.avatar || ''}
               w={"40px"}
               h={"40px"}
             />
